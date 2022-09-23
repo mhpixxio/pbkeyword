@@ -14,8 +14,13 @@ message KeywordResponse{
     repeated string keywords = 1;
 }
 
+message  UpdateAssociationTableRequest{
+    int32 minUsageOfKeyword = 1;
+    int32 minCountInPaths = 2;
+}
+
 service UpdateAssociationTableService {
-	rpc UpdateAssociationTableFunc(EmptyMessage) returns (EmptyMessage) {}
+	rpc UpdateAssociationTableFunc(UpdateAssociationTableRequest) returns (EmptyMessage) {}
 }
 
 service KeywordService {
