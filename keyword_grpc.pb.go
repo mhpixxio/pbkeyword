@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UpdateAssociationTableServiceClient interface {
-	UpdateAssociationTableFunc(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*ErrMessage, error)
+	UpdateAssociationTableFunc(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*EmptyMessage, error)
 }
 
 type updateAssociationTableServiceClient struct {
@@ -33,8 +33,8 @@ func NewUpdateAssociationTableServiceClient(cc grpc.ClientConnInterface) UpdateA
 	return &updateAssociationTableServiceClient{cc}
 }
 
-func (c *updateAssociationTableServiceClient) UpdateAssociationTableFunc(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*ErrMessage, error) {
-	out := new(ErrMessage)
+func (c *updateAssociationTableServiceClient) UpdateAssociationTableFunc(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*EmptyMessage, error) {
+	out := new(EmptyMessage)
 	err := c.cc.Invoke(ctx, "/UpdateAssociationTableService/UpdateAssociationTableFunc", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ func (c *updateAssociationTableServiceClient) UpdateAssociationTableFunc(ctx con
 // All implementations must embed UnimplementedUpdateAssociationTableServiceServer
 // for forward compatibility
 type UpdateAssociationTableServiceServer interface {
-	UpdateAssociationTableFunc(context.Context, *EmptyMessage) (*ErrMessage, error)
+	UpdateAssociationTableFunc(context.Context, *EmptyMessage) (*EmptyMessage, error)
 	mustEmbedUnimplementedUpdateAssociationTableServiceServer()
 }
 
@@ -54,7 +54,7 @@ type UpdateAssociationTableServiceServer interface {
 type UnimplementedUpdateAssociationTableServiceServer struct {
 }
 
-func (UnimplementedUpdateAssociationTableServiceServer) UpdateAssociationTableFunc(context.Context, *EmptyMessage) (*ErrMessage, error) {
+func (UnimplementedUpdateAssociationTableServiceServer) UpdateAssociationTableFunc(context.Context, *EmptyMessage) (*EmptyMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAssociationTableFunc not implemented")
 }
 func (UnimplementedUpdateAssociationTableServiceServer) mustEmbedUnimplementedUpdateAssociationTableServiceServer() {

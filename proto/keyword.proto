@@ -5,25 +5,17 @@ option go_package = "../pbkeyword";
 message EmptyMessage {
 }
 
-message ErrMessage {
-  string errString = 1;
-}
-
-message KeywordMessage{
-    string keyword = 1;
-}
-
 message KeywordRequest{
-    repeated KeywordMessage keywords = 1;
+    repeated string keywords = 1;
     int32 numberOfKeywords = 2;
 }
 
 message KeywordResponse{
-    repeated KeywordMessage keywords = 1;
+    repeated string keywords = 1;
 }
 
 service UpdateAssociationTableService {
-	rpc UpdateAssociationTableFunc(EmptyMessage) returns (ErrMessage) {}
+	rpc UpdateAssociationTableFunc(EmptyMessage) returns (EmptyMessage) {}
 }
 
 service KeywordService {
