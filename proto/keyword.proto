@@ -16,7 +16,7 @@ message KeywordResponse{
 
 message  UpdateAssociationTableRequest{
     int32 minUsageOfKeyword = 1;
-    int32 minCountInPaths = 2;
+    int32 minAssociations = 2;
 }
 
 service UpdateAssociationTableService {
