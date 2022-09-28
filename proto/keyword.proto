@@ -5,12 +5,12 @@ option go_package = "../pbkeyword";
 message EmptyMessage {
 }
 
-message KeywordRequest{
+message FetchKeywordsRequest{
     repeated string keywords = 1;
-    int32 numberOfKeywords = 2;
+    int32 numberOfKeywordsRequested = 2;
 }
 
-message KeywordResponse{
+message FetchKeywordsResponse{
     repeated string keywords = 1;
 }
 
@@ -23,6 +23,6 @@ service UpdateAssociationTableService {
 	rpc UpdateAssociationTableFunc(UpdateAssociationTableRequest) returns (EmptyMessage) {}
 }
 
-service KeywordService {
-	rpc KeywordFunc(KeywordRequest) returns (KeywordResponse) {}
+service FetchKeywordsService {
+	rpc FetchKeywordsFunc(FetchKeywordsRequest) returns (FetchKeywordsResponse) {}
 }

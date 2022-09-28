@@ -105,86 +105,86 @@ var UpdateAssociationTableService_ServiceDesc = grpc.ServiceDesc{
 	Metadata: "keyword.proto",
 }
 
-// KeywordServiceClient is the client API for KeywordService service.
+// FetchKeywordsServiceClient is the client API for FetchKeywordsService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type KeywordServiceClient interface {
-	KeywordFunc(ctx context.Context, in *KeywordRequest, opts ...grpc.CallOption) (*KeywordResponse, error)
+type FetchKeywordsServiceClient interface {
+	FetchKeywordsFunc(ctx context.Context, in *FetchKeywordsRequest, opts ...grpc.CallOption) (*FetchKeywordsResponse, error)
 }
 
-type keywordServiceClient struct {
+type fetchKeywordsServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewKeywordServiceClient(cc grpc.ClientConnInterface) KeywordServiceClient {
-	return &keywordServiceClient{cc}
+func NewFetchKeywordsServiceClient(cc grpc.ClientConnInterface) FetchKeywordsServiceClient {
+	return &fetchKeywordsServiceClient{cc}
 }
 
-func (c *keywordServiceClient) KeywordFunc(ctx context.Context, in *KeywordRequest, opts ...grpc.CallOption) (*KeywordResponse, error) {
-	out := new(KeywordResponse)
-	err := c.cc.Invoke(ctx, "/KeywordService/KeywordFunc", in, out, opts...)
+func (c *fetchKeywordsServiceClient) FetchKeywordsFunc(ctx context.Context, in *FetchKeywordsRequest, opts ...grpc.CallOption) (*FetchKeywordsResponse, error) {
+	out := new(FetchKeywordsResponse)
+	err := c.cc.Invoke(ctx, "/FetchKeywordsService/FetchKeywordsFunc", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// KeywordServiceServer is the server API for KeywordService service.
-// All implementations must embed UnimplementedKeywordServiceServer
+// FetchKeywordsServiceServer is the server API for FetchKeywordsService service.
+// All implementations must embed UnimplementedFetchKeywordsServiceServer
 // for forward compatibility
-type KeywordServiceServer interface {
-	KeywordFunc(context.Context, *KeywordRequest) (*KeywordResponse, error)
-	mustEmbedUnimplementedKeywordServiceServer()
+type FetchKeywordsServiceServer interface {
+	FetchKeywordsFunc(context.Context, *FetchKeywordsRequest) (*FetchKeywordsResponse, error)
+	mustEmbedUnimplementedFetchKeywordsServiceServer()
 }
 
-// UnimplementedKeywordServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedKeywordServiceServer struct {
+// UnimplementedFetchKeywordsServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedFetchKeywordsServiceServer struct {
 }
 
-func (UnimplementedKeywordServiceServer) KeywordFunc(context.Context, *KeywordRequest) (*KeywordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method KeywordFunc not implemented")
+func (UnimplementedFetchKeywordsServiceServer) FetchKeywordsFunc(context.Context, *FetchKeywordsRequest) (*FetchKeywordsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchKeywordsFunc not implemented")
 }
-func (UnimplementedKeywordServiceServer) mustEmbedUnimplementedKeywordServiceServer() {}
+func (UnimplementedFetchKeywordsServiceServer) mustEmbedUnimplementedFetchKeywordsServiceServer() {}
 
-// UnsafeKeywordServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to KeywordServiceServer will
+// UnsafeFetchKeywordsServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to FetchKeywordsServiceServer will
 // result in compilation errors.
-type UnsafeKeywordServiceServer interface {
-	mustEmbedUnimplementedKeywordServiceServer()
+type UnsafeFetchKeywordsServiceServer interface {
+	mustEmbedUnimplementedFetchKeywordsServiceServer()
 }
 
-func RegisterKeywordServiceServer(s grpc.ServiceRegistrar, srv KeywordServiceServer) {
-	s.RegisterService(&KeywordService_ServiceDesc, srv)
+func RegisterFetchKeywordsServiceServer(s grpc.ServiceRegistrar, srv FetchKeywordsServiceServer) {
+	s.RegisterService(&FetchKeywordsService_ServiceDesc, srv)
 }
 
-func _KeywordService_KeywordFunc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(KeywordRequest)
+func _FetchKeywordsService_FetchKeywordsFunc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchKeywordsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(KeywordServiceServer).KeywordFunc(ctx, in)
+		return srv.(FetchKeywordsServiceServer).FetchKeywordsFunc(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/KeywordService/KeywordFunc",
+		FullMethod: "/FetchKeywordsService/FetchKeywordsFunc",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(KeywordServiceServer).KeywordFunc(ctx, req.(*KeywordRequest))
+		return srv.(FetchKeywordsServiceServer).FetchKeywordsFunc(ctx, req.(*FetchKeywordsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// KeywordService_ServiceDesc is the grpc.ServiceDesc for KeywordService service.
+// FetchKeywordsService_ServiceDesc is the grpc.ServiceDesc for FetchKeywordsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var KeywordService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "KeywordService",
-	HandlerType: (*KeywordServiceServer)(nil),
+var FetchKeywordsService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "FetchKeywordsService",
+	HandlerType: (*FetchKeywordsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "KeywordFunc",
-			Handler:    _KeywordService_KeywordFunc_Handler,
+			MethodName: "FetchKeywordsFunc",
+			Handler:    _FetchKeywordsService_FetchKeywordsFunc_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
